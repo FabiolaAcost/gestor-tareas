@@ -17,7 +17,7 @@ const TaskForm = ({ onTaskAdded }) => {
             if (!val) return false;
             const selectedDate = new Date(val);
             const today = new Date();
-            today.setHours(0, 0, 0, 0); // para comparar solo la fecha sin hora
+            today.setHours(0, 0, 0, 0); 
             return selectedDate >= today;
           },
           required: true
@@ -26,7 +26,7 @@ const TaskForm = ({ onTaskAdded }) => {
     })
   );
   
-    const [forceUpdate, setForceUpdate] = useState(0); // para forzar el render del validador
+    const [forceUpdate, setForceUpdate] = useState(0); 
 
   const handleChange = (e) => {
     setTask({ ...task, [e.target.name]: e.target.value });
@@ -37,7 +37,6 @@ const TaskForm = ({ onTaskAdded }) => {
 
     if (validator.allValid()) {
       try {
-        // Simulación de API (prioridad automática)
         const response = await axios.get("https://jsonplaceholder.typicode.com/posts/1");
         const suggestedPriority = response.data.id % 2 === 0 ? "Alta" : "Media";
 
